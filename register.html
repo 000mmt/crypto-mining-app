@@ -172,20 +172,22 @@
         alert(error.message);
       } else {
         alert("Login successful! User ID: " + data.user.id);
+        window.location.href = "https://000mmt.github.io/crypto-mining-app/dashboard.html";
       }
     }
 
     // Google Sign-In
     async function googleSignIn() {
       const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "google"
+        provider: "google",
+        options: {
+          redirectTo: "https://000mmt.github.io/crypto-mining-app/dashboard.html"
+        }
       });
       if (error) {
         alert(error.message);
-      } else {
-        console.log("Redirecting to Google login...");
       }
-    }
+     }
   </script>
 
 
