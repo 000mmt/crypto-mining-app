@@ -187,5 +187,39 @@
       }
     }
   </script>
+
+
+
+  <script>
+  // Show a notification bar
+  function showNotification(message, color = "green") {
+    const bar = document.createElement("div");
+    bar.textContent = message;
+    bar.style.position = "fixed";
+    bar.style.top = "0";
+    bar.style.left = "0";
+    bar.style.width = "100%";
+    bar.style.padding = "15px";
+    bar.style.backgroundColor = color;
+    bar.style.color = "white";
+    bar.style.textAlign = "center";
+    bar.style.fontWeight = "bold";
+    document.body.appendChild(bar);
+
+    setTimeout(() => {
+      bar.remove();
+    }, 5000); // disappears after 5s
+  }
+
+  // Check if redirected from email confirmation
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("type") === "signup") {
+    showNotification("✅ Email confirmed! Please log in.");
+    // Force login form visible
+    document.getElementById("register-form").classList.add("hidden");
+    document.getElementById("login-form").classList.remove("hidden");
+  }
+</script>
+
 </body>
 </html>
